@@ -1,6 +1,9 @@
 
 import 'dart:convert';
+import 'package:flutter/services.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:rikarne2/controller/CutController.dart';
 
 import 'package:rikarne2/model/Animal.dart';
 
@@ -8,18 +11,16 @@ class AnimalsController{
   final String _baseUrl = 'flutter-varios-c603c-default-rtdb.firebaseio.com';
   static List<Animal> animals = [];
   late Animal selectedAnimal;
+  final CutController cutController = CutController();
 
   Future getAnimals() async{
-    final url = Uri.https(_baseUrl,'/rikarne/animals.json');
-    final resp = await http.get(url);
+    //final url = Uri.https(_baseUrl,'/rikarne/animals.json');
+    //final resp = await http.get(url);
 
-    final Map<String,dynamic> animalMap = json.decode(resp.body);
-
-    animalMap.forEach((key, value) {
-      final tempAnimal = Animal.fromMap(value);
-      tempAnimal.id = key;
-      animals.add(tempAnimal);
-    });
+    final jsonString = await rootBundle.loadString('assets/animals.json');
+    final data = await json.decode(jsonString);
+    
+    animals = data.map((value) => Animal.fromMap(value)).toList();
 
     return animals;
   }

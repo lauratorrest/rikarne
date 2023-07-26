@@ -1,0 +1,26 @@
+[
+    {
+        "id": 0,
+        "name": "RES",
+        "weight": 0.0,
+        "buy_price": 0.0,
+        "sell_price": 0.0,
+        "rentability": 0.0
+    },
+    {
+        "id": 1,
+        "name": "POLLO",
+        "weight": 0.0,
+        "buy_price": 0.0,
+        "sell_price": 0.0,
+        "rentability": 0.0
+    },
+    {
+        "id": 2,
+        "name": "CERDO",
+        "weight": 0.0,
+        "buy_price": 0.0,
+        "sell_price": 0.0,
+        "rentability": 0.0
+    }
+]

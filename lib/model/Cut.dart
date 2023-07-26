@@ -4,11 +4,13 @@ class Cut{
   String name;
   double weight;
   double sellPrice;
+  String animalId;
 
   Cut({
     required this.name,
     required this.weight,
-    required this.sellPrice
+    required this.sellPrice,
+    required this.animalId
   });
 
   factory Cut.fromJson(String str) => Cut.fromMap(json.decode(str));
@@ -19,7 +21,8 @@ class Cut{
     return {
       'name': name,
       'weight': weight,
-      'sellPrice': sellPrice
+      'sell_price': sellPrice,
+      'animal_id': animalId
     };
   }
 
@@ -27,7 +30,8 @@ class Cut{
     return Cut(
       name: map['name'],
       weight: map['weight'],
-      sellPrice: map['sellPrice'],
+      sellPrice: map['sell_price'],
+      animalId: map['animal_id']
     );
   }  
 
@@ -35,5 +39,6 @@ class Cut{
     name: name,
     weight: weight,
     sellPrice: sellPrice,
+    animalId: animalId
   ); 
 }

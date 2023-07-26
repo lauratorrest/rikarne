@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'package:rikarne2/controller/AnimalsController.dart';
-import 'package:rikarne2/model/Animal.dart';
+import 'package:rikarne2/controller/AnimalController.dart';
 import 'package:rikarne2/model/ButchersWorkshop.dart';
 
 class ButchersWorkshopController{

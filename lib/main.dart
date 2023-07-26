@@ -1,14 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:rikarne2/controller/AnimalsController.dart';
+import 'package:rikarne2/controller/AnimalController.dart';
 
 import 'package:rikarne2/controller/ButchersWorkshopController.dart';
-import 'package:rikarne2/model/Animal.dart';
-import 'package:rikarne2/model/ButchersWorkshop.dart';
-import 'package:rikarne2/model/Cut.dart';
+import 'package:rikarne2/controller/CutController.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
 }
 
@@ -16,9 +14,10 @@ class MyApp extends StatelessWidget {
 
   ButchersWorkshopController workshopController = ButchersWorkshopController();
   AnimalsController animalsController = AnimalsController();
+  CutController cutController = CutController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -27,9 +26,11 @@ class MyApp extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: () async => workshopController.saveCreateWorkshop(
-            ButchersWorkshop(id: null, createdDate: DateTime.now(), animals: await animalsController.getAnimals())
-          )
+          onPressed: () async {
+            
+            cutController.getCutsByAnimal("0");
+            
+          }
         ),
       )
     );
