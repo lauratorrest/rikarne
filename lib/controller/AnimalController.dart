@@ -42,7 +42,7 @@ class AnimalsController{
     animals.add(animal);
   }
 
-  Future<String> updateWorkshop(Animal animal) async{
+  Future<int> updateWorkshop(Animal animal) async{
     final url = Uri.https( _baseUrl, 'animals/${ animal.id }.json');
     final resp = await http.put( url , body: animal.toJson() );
     final decodedData = resp.body;
@@ -50,6 +50,6 @@ class AnimalsController{
     final index = animals.indexWhere((element) => element.id == animal.id);
     animals[index] = animal;
 
-    return animal.id!;
+    return animal.id;
   }
 }

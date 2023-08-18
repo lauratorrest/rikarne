@@ -1,22 +1,22 @@
 import 'dart:convert';
 
-import 'package:rikarne2/model/Cut.dart';
-
 class Animal{
-  String? id;
+  int id;
+  String name;
   double weight;
   double buyPrice;
   double sellPrice;
   double rentability;
-  List<Cut> cuts;
+  int workshopId;
 
   Animal({
     required this.id,
+    required this.name,
     required this.weight,
     required this.buyPrice,
     required this.sellPrice,
     required this.rentability,
-    required this.cuts
+    required this.workshopId
   });
 
   factory Animal.fromJson(String str) => Animal.fromMap(json.decode(str));
@@ -25,32 +25,35 @@ class Animal{
 
   Map<String, dynamic> toMap() {
     return {
-      'name': id,
+      'id': id,
+      'name': name,
       'weight': weight,
       'buy_price': buyPrice,
       'sell_price': sellPrice,
       'rentability': rentability,
-      'cuts': cuts.map((cut) => cut.toMap()).toList()
+      'workshop_id': workshopId
     };
   }
 
   static Animal fromMap(Map<String, dynamic> map) {
     return Animal(
-      id: map['name'],
+      id: map['id'],
+      name: map['name'],
       weight: map['weight'],
       buyPrice: map['buy_price'],
       sellPrice: map['sell_price'],
       rentability: map['rentability'],
-      cuts: List<Cut>.from(map['cuts'].map((cutMap) => Cut.fromMap(cutMap))),
+      workshopId: map['workshop_id']
     );
   }
 
   Animal copy() => Animal(
     id: id,
+    name: name,
     weight: weight,
     buyPrice: buyPrice,
     sellPrice: sellPrice,
     rentability: rentability,
-    cuts: cuts
+    workshopId: workshopId
   ); 
 }

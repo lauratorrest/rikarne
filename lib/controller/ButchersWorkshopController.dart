@@ -40,8 +40,6 @@ class ButchersWorkshopController{
     final resp = await http.post( url , body: workshop.toJson() );
     final decodedData = json.decode(resp.body);
 
-    workshop.animals
-      .forEach((a) => a.sellPrice = a.cuts.fold(0, (previousValue, e) => previousValue + e.sellPrice));
     workshop.animals.forEach((a) => a.rentability = a.buyPrice / a.sellPrice * 100);
     
     workshop.id = decodedData['id'];
