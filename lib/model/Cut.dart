@@ -1,4 +1,4 @@
-import 'dart:convert';
+// ignore_for_file: file_names
 
 class Cut{
   int id;
@@ -14,10 +14,6 @@ class Cut{
     required this.sellPrice,
     required this.animalId
   });
-
-  factory Cut.fromJson(String str) => Cut.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
 
   Map<String, dynamic> toMap() {
     return {
@@ -38,12 +34,4 @@ class Cut{
       animalId: map['animal_id']
     );
   }  
-
-  Cut copy() => Cut(
-    id: id,
-    name: name,
-    weight: weight,
-    sellPrice: sellPrice,
-    animalId: animalId
-  ); 
 }

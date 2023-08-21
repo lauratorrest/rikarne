@@ -1,35 +1,29 @@
-import 'dart:convert';
-
-import 'package:rikarne2/model/Animal.dart';
+// ignore_for_file: file_names
 
 class ButchersWorkshop{
-  String? id;
+  int? id;
   DateTime createdDate;
-  List<Animal> animals; 
+  DateTime? updatedDate;
 
   ButchersWorkshop({
     this.id,
     required this.createdDate,
-    required this.animals
+    this.updatedDate
   });  
-
-  factory ButchersWorkshop.fromJson(String str) => ButchersWorkshop.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'created_date': createdDate.toIso8601String(),
-      'animals': animals.map((animal) => animal.toMap()).toList()
+      'updated_date': createdDate.toIso8601String(),
     };
   }
 
   static ButchersWorkshop fromMap(Map<String, dynamic> map) {
     return ButchersWorkshop(
       id: map['id'],
-      createdDate: map['created_date'],
-      animals : List<Animal>.from(map['animals'].map((animalMap) => Animal.fromMap(animalMap))),
+      createdDate: DateTime.parse(map['created_date']),
+      updatedDate: DateTime.parse(map['updated_date']),
     );
   }  
 }
